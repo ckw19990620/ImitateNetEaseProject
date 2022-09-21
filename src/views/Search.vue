@@ -1,10 +1,13 @@
 <template>
-$END$
+  <div class="search">
+    <p>搜索</p>
+  </div>
 </template>
 
 <script>
 export default {
-name: "Search"
+  /* eslint-disable */
+  name: 'Search'
 }
 </script>
 

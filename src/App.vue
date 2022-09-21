@@ -1,15 +1,46 @@
 <template>
   <div id="app">
-    <div class="test"></div>
-    <div>我是段落</div>
+    <Header></Header>
+    <Tabbar></Tabbar>
+    <Player></Player>
+    <router-view></router-view>
   </div>
 </template>
-
-<style lang="scss">
-.test{
-  width: 100Px;
-  height: 100Px;
-  background-color: red;
-  //transform: translate(100px,100px);
+<script>
+import Header from '@/components/Header'
+import Tabbar from '@/components/Tabbar'
+import Player from '@/views/Player'
+export default {
+  name: 'App',
+  methods: {
+  },
+  components: {
+    Header,
+    Tabbar,
+    Player
+  }
 }
+</script>
+
+<style lang="scss" scoped>
+@import "assets/css/variable";
+.changeSkin{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  button{
+    width: 100px;
+    height: 100px;
+    &:nth-of-type(1){
+      background-color: $background-color-theme;
+    }
+    &:nth-of-type(2){
+      background-color: $background-color-theme1;
+    }
+    &:nth-of-type(3){
+      background-color: $background-color-theme2;
+    }
+  }
+}
+
 </style>

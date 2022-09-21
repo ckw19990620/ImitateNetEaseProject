@@ -1,10 +1,13 @@
 <template>
-$END$
+  <div class="rank">
+    <p>排行</p>
+  </div>
 </template>
 
 <script>
 export default {
-name: "rank"
+  /* eslint-disable */
+  name: 'Rank'
 }
 </script>
 

@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import SubHeader from '@/components/SubHeader'
-import DetailTop from '@/components/DetailTop'
-import DetailBottom from '@/components/DetailBottom'
+import SubHeader from '@/components/Detail/DetailHeader'
+import DetailTop from '@/components/Detail/DetailTop'
+import DetailBottom from '@/components/Detail/DetailBottom'
 import ScrollView from '@/components/ScrollView'
 import { getPlayList, getAlbum } from '@/api'
 
@@ -32,7 +32,7 @@ export default {
     }
   },
   created () {
-    console.log(this.$route.params)
+    console.log(this.$route.params.type)
     if (this.$route.params.type === 'personalized') {
       getPlayList({ id: this.$route.params.id })
         .then((data) => {
@@ -65,9 +65,12 @@ export default {
       // console.log(offsetY)
       if (offsetY < 0) {
         // console.log('向上滚动')
-        const scale = 20 * Math.abs(offsetY) / defaultHeight
+        // 高斯模糊是非常消耗性能的，不推荐在移动端使用，如果非要在移动端使用，建议只设置一次
+        // const scale = 20 * Math.abs(offsetY) / defaultHeight
+        const scale = Math.abs(offsetY) / defaultHeight
+        this.$refs.top.changeMask(scale)
         // console.log(scale)
-        this.$refs.top.$el.style.filter = `blur(${scale}px)`
+        // this.$refs.top.$el.style.filter = `blur(${scale}px)`
       } else {
         // console.log('向下滚动')
         const scale = 1 + offsetY / defaultHeight

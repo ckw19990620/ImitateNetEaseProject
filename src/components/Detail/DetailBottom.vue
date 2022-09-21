@@ -1,10 +1,10 @@
 <template>
 <ul class="detail-Bottom">
-  <li class="bottom-top">
+  <li class="bottom-top" @click="selectAllMusic">
     <div class="bottom-icon"></div>
     <div class="bottom-title">播放全部</div>
   </li>
-  <li v-for="value in playlist" :key="value.id" class="item">
+  <li v-for="value in playlist" :key="value.id" class="item" @click.stop="selectMusic(value.id)">
     <h3>{{value.name}}</h3>
 <!--    value.al.name专辑名称-->
 <!--    value.ar.name歌手名称-->
@@ -14,8 +14,27 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'DetailBottom',
+  methods: {
+    ...mapActions([
+      'setFullScreen',
+      'setSongDetail'
+    ]),
+    selectMusic (id) {
+      this.setFullScreen(true)
+      this.setSongDetail([id])
+    },
+    selectAllMusic () {
+      this.setFullScreen(true)
+      const ids = this.playlist.map(function (item) {
+        return item.id
+      })
+      console.log(ids)
+      this.setSongDetail(ids)
+    }
+  },
   props: {
     playlist: {
       type: Array,
@@ -27,10 +46,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/css/mixin";
-@import "../assets/css/variable";
+@import "../../assets/css/mixin";
+@import "../../assets/css/variable";
 .detail-Bottom{
   width: 100%;
+  padding-bottom: 135px;
   li{
     width: 100%;
     height: 100px;
@@ -47,7 +67,7 @@ export default {
       width: 60px;
       height: 60px;
       margin-right: 20px;
-      @include bg_img('../assets/images/small_play')
+      @include bg_img('../../assets/images/small_play')
     }
     .bottom-title{
       @include font_color();

@@ -1,12 +1,12 @@
 <template>
   <div class="albums">
     <div class="albums-top">
-      <h3>{{title}}</h3>
+      <h3>{{ title }}</h3>
     </div>
     <div class="albums-list">
       <div class="item" v-for="value in albums" :key="value.id" @click="selectItem(value.id)">
         <img v-lazy="value.picUrl" alt="">
-        <p>{{value.name}}</p>
+        <p>{{ value.name }}</p>
       </div>
     </div>
   </div>
@@ -42,38 +42,45 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/css/mixin";
-@import "../assets/css/variable";
-.albums{
+@import "../../assets/css/mixin";
+@import "../../assets/css/variable";
+
+.albums {
   @include bg_sub_color();
-  .albums-top{
+
+  .albums-top {
     width: 100%;
     height: 84px;
     line-height: 84px;
     @include bg_sub_color();
     padding: 0 20px;
     border-bottom: 1px solid #ccc;
-    h3{
+
+    h3 {
       @include font_size($font_large);
       font-weight: bold;
       @include font_color()
     }
   }
-  .albums-list{
+
+  .albums-list {
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 20px 0;
-    .item{
+
+    .item {
       width: 200px;
       padding-bottom: 20px;
-      img{
+
+      img {
         width: 200px;
         height: 200px;
         border-radius: 20px;
       }
-      p{
+
+      p {
         @include clamp(2);
         @include font_color();
         @include font_size($font_medium_s);

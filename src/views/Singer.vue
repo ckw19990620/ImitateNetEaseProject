@@ -1,10 +1,13 @@
 <template>
-$END$
+  <div class="singer">
+    <p>热门歌手</p>
+  </div>
 </template>
 
 <script>
 export default {
-name: "singer"
+  /* eslint-disable */
+  name: 'Singer'
 }
 </script>
 
