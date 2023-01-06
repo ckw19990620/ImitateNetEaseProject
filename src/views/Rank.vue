@@ -1,6 +1,7 @@
 <template>
   <div class="rank">
     <p>排行</p>
+    <p>推送测试</p>
   </div>
 </template>
 
